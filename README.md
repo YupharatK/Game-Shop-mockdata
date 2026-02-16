@@ -1,63 +1,33 @@
-<<<<<<< HEAD
-# Game-Shop-mockdata
-=======
-# GameShop
+# Game Shop MockData 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+EN: A mock-data driven game shop web application for browsing, searching, and purchasing games.  
+TH: เว็บแอปขายเกมที่ใช้ข้อมูลจำลอง (Mock Data) สำหรับดู ค้นหา และซื้อเกม
 
-## Development server
+## ✨ Features
 
-To start a local development server, run:
+- EN: Browse game catalog with categories and filters  
+  TH: ดูรายการเกมพร้อมหมวดหมู่และตัวกรอง
+- EN: Search games with improved matching and ranking  
+  TH: ค้นหาเกมด้วยระบบค้นหาที่แม่นยำขึ้นและมีการจัดลำดับผลลัพธ์
+- EN: Add to cart, apply discount code, and checkout flow  
+  TH: เพิ่มลงตะกร้า ใช้โค้ดส่วนลด และชำระเงิน
+- EN: Admin pages for managing games, users, transactions, and discounts  
+  TH: หน้าแอดมินสำหรับจัดการเกม ผู้ใช้ ธุรกรรม และส่วนลด
 
-```bash
-ng serve
-```
+## 🛠 Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- EN: Angular 20, TypeScript, RxJS, SCSS  
+  TH: Angular 20, TypeScript, RxJS, SCSS
+- EN: Mock Backend via Angular HTTP Interceptor + JSON data  
+  TH: Mock Backend ผ่าน Angular HTTP Interceptor + ข้อมูล JSON
+- EN: LocalStorage for mock state persistence  
+  TH: ใช้ LocalStorage สำหรับเก็บสถานะข้อมูลจำลอง
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## ⚙️ Installation
 
 ```bash
-ng build
+git clone https://github.com/YupharatK/Game-Shop-mockdata.git
+cd Game-Shop-mockdata
+npm install
+npm start
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
->>>>>>> 64de332 (first commit)
