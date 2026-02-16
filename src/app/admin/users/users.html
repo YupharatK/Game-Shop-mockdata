@@ -1,0 +1,26 @@
+<div class="page-container">
+  <header class="page-header">
+    <h1>Users Manage</h1>
+  </header>
+
+  <section class="user-controls">
+    <label for="search-user">Search User</label>
+    <div class="search-container">
+      <fa-icon [icon]="faSearch"></fa-icon>
+      <input type="text" id="search-user" placeholder="Search by name or email">
+    </div>
+  </section>
+
+  <section class="users-list">
+    <div class="list-row header">
+      <span>USERNAME</span>
+      <span>EMAIL</span>
+      <span>REGISTRATION DATE</span>
+    </div>
+    <div class="list-row" *ngFor="let user of users">
+      <span>{{ user.username }}</span>
+      <span>{{ user.email }}</span>
+      <span>{{ user.registrationDate }}</span>
+    </div>
+  </section>
+</div>

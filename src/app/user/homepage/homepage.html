@@ -1,0 +1,68 @@
+<div class="shop-container">
+  <!-- Hero -->
+  <section class="hero-section">
+    <img
+      class="hero-bg-image"
+      src="https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg"
+      alt="Hero background"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Unleash Your Inner Outlaw</h1>
+      <p>Ride into the untamed West, forge your own legend, and experience an epic tale of honor and loyalty.</p>
+      <button class="hero-button" [routerLink]="['/shop']">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Best Sellers -->
+<section class="game-section">
+  <h2>Best Sellers</h2>
+
+  <div *ngIf="loadingTop" class="info">Loading best sellers...</div>
+  <div *ngIf="!loadingTop && topError" class="error">{{ topError }}</div>
+
+  <div class="game-grid" *ngIf="!loadingTop && !topError">
+    <a
+      class="game-card game-card-link"
+      *ngFor="let game of bestSellers"
+      [routerLink]="['/game-details', game.id]"
+    >
+      <img [src]="game.imageUrl" [alt]="game.title" class="game-image" />
+      <h3 class="game-title">{{ game.title }}</h3>
+      <p class="game-price">฿ {{ game.price | number:'1.2-2' }}</p>
+
+      <div *ngIf="!game.isOwned; else ownedBlock" class="button-group">
+        <button class="btn-add" (click)="addToCart(game, $event)">ADD</button>
+        <button class="btn-buy" (click)="buyNow(game, $event)">BUY</button>
+      </div>
+
+      <ng-template #ownedBlock>
+        <div class="owned-badge">IN LIBRARY</div>
+      </ng-template>
+    </a>
+
+    <div *ngIf="!bestSellers?.length" class="empty">No best sellers to show.</div>
+  </div>
+</section>
+
+
+  <!-- New Releases -->
+  <section class="game-section">
+    <h2>New Releases</h2>
+    <div class="game-grid">
+      <a
+        class="game-card game-card-link"
+        *ngFor="let game of newReleases"
+        [routerLink]="['/game-details', game.id]"
+      >
+        <img [src]="game.imageUrl" [alt]="game.title" class="game-image" />
+        <h3 class="game-title">{{ game.title }}</h3>
+        <p class="game-price">฿ {{ game.price | number:'1.2-2' }}</p>
+        <div class="button-group">
+          <button class="btn-add" (click)="addToCart(game, $event)">ADD</button>
+          <button class="btn-buy" (click)="buyNow(game, $event)">BUY</button>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>

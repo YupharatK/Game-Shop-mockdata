@@ -1,0 +1,51 @@
+<nav class="navbar" *ngIf="currentUser$ | async as currentUser; else guestNavbar">
+  <div class="navbar-left">
+    <div class="logo">GameVault</div>
+    <ul class="nav-links">
+      <li><a routerLink="/homepage" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/shop" routerLinkActive="active">Shop</a></li>
+      <li><a routerLink="/my-games" routerLinkActive="active">My Games</a></li>
+    </ul>
+  </div>
+  <div class="navbar-right">
+    <div class="search-bar">
+      <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
+        <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+        <input type="text" placeholder="Search" formControlName="query" />
+      </form>
+      </div>
+    <a (click)="toggleCart()" class="cart-icon">
+      <fa-icon [icon]="faShoppingCart"></fa-icon>
+    </a>
+
+    <a routerLink="/profile">
+      <img [src]="currentUser.profile_image" [alt]="currentUser.username" class="avatar-icon" />
+    </a>
+  </div>
+</nav>
+
+<ng-template #guestNavbar>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="logo">GameVault</div>
+      <ul class="nav-links">
+        <li><a routerLink="/homepage" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/shop" routerLinkActive="active">Shop</a></li>
+      </ul>
+    </div>
+    <div class="navbar-right">
+      <div class="search-bar">
+        <form [formGroup]="searchForm" (ngSubmit)="onSearchSubmit()">
+          <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+          <input type="text" placeholder="Search" formControlName="query" />
+        </form>
+      </div>
+      <a (click)="toggleCart()" class="cart-icon">
+        <fa-icon [icon]="faShoppingCart"></fa-icon>
+      </a>
+      <a routerLink="/auth/login" class="login-button">Login</a>
+    </div>
+  </nav>
+</ng-template>
+
+<app-cart></app-cart>

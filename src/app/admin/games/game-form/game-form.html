@@ -1,0 +1,52 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="onCancel()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>{{ gameToEdit ? 'Edit Game' : 'Add New Game' }}</h2>
+
+    <form class="game-form" [formGroup]="gameForm" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="game-title">Game Title</label>
+        <input type="text" id="game-title" placeholder="e.g. Minecraft" formControlName="name">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" id="price" placeholder="1000.00" formControlName="price">
+        </div>
+        <div class="form-group">
+          <label for="genre">Genre</label>
+          <select id="genre" formControlName="type_id">
+            <option value="" disabled>Select genre</option>
+            <option *ngFor="let type of gameTypes$ | async" [value]="type.id">
+              {{ type.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" rows="4" placeholder="Describe the game..." formControlName="description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Image</label>
+        <label class="drop-zone" for="game-image-input">
+          <img *ngIf="imagePreview" [src]="imagePreview" class="image-preview" alt="Preview">
+          <div *ngIf="!imagePreview" class="upload-placeholder">
+            <fa-icon [icon]="faCloudUpload"></fa-icon>
+            <span>Upload a picture or drag & drop</span>
+          </div>
+        </label>
+        <input type="file" id="game-image-input" (change)="onFileSelected($event)" accept="image/png, image/jpeg" hidden>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn-save" [disabled]="gameForm.invalid">
+          {{ gameToEdit ? 'Save Changes' : 'Save Game' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="onCancel()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>{{ discountToEdit ? 'Edit Discount Code' : 'Create New Discount Code' }}</h2>
+
+    <form class="discount-form" [formGroup]="discountForm" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label for="codeName">Code Name</label>
+        <input type="text" id="codeName" placeholder="e.g FREE20" formControlName="codeName">
+      </div>
+
+      <div class="form-group">
+        <label for="value">Discount Value (%)</label>
+        <input type="number" id="value" placeholder="e.g 20" formControlName="value" step="0.01">
+      </div>
+
+      <div class="form-group">
+        <label for="totalUses">Total Number of Uses Allowed</label>
+        <input type="number" id="totalUses" placeholder="e.g 10" formControlName="totalUses">
+      </div>
+
+      <div class="form-group">
+        <label for="expirationDate">Expiration Date</label>
+        <input type="date" id="expirationDate" formControlName="expirationDate">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
+
+        <button type="submit" class="btn-save" [disabled]="discountForm.invalid || isSubmitting">
+          {{ discountToEdit ? (isSubmitting ? 'Saving...' : 'Save Changes') : (isSubmitting ? 'Creating...' : 'Create Code') }}
+        </button>
+
+        <button *ngIf="discountToEdit" type="button" class="btn-delete" (click)="onDelete()" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Deleting...' : 'Delete' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="search-page-container">
+  <h1 *ngIf="query">Search Results for "{{ query }}"</h1>
+  <h1 *ngIf="!query">Please enter a search term.</h1>
+
+  <div *ngIf="isLoading" class="loading-spinner">Loading...</div>
+
+  <div *ngIf="!isLoading && searchResults.length > 0" class="game-grid">
+    
+    <div *ngFor="let game of searchResults" class="game-card">
+      <img [src]="game.image_url" [alt]="game.name" class="game-image">
+      <div class="card-content">
+        <h3 class="game-title">{{ game.name }}</h3>
+        <p class="game-genre">{{ game.genre_name }}</p>
+        <p class="game-price">{{ game.price | number:'1.2-2' }} Baht</p>
+        <div class="button-group">
+          <button class="btn-add">ADD</button>
+          <button class="btn-buy">BUY</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  <div *ngIf="!isLoading && searchResults.length === 0 && query">
+    <p>No games found for "{{ query }}".</p>
+  </div>
+</div>

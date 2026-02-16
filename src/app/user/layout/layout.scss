@@ -1,0 +1,86 @@
+/* src/app/user/layout/layout.component.scss */
+$navbar-bg: #0E114D;
+$text-color: #FFFFFF;
+$border-color: #2a2e6e;
+$accent-color: #0015FE;
+
+.navbar {
+  display: flex;
+  font-family: 'Poppins', sans-serif; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: $navbar-bg;
+  border-bottom: 1px solid $border-color;
+  color: $text-color;
+
+  .navbar-left, .navbar-right, .nav-links, .nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      
+      &:hover, &.active {
+        color: lighten($accent-color, 20%);
+      }
+    }
+  }
+
+  .search-bar input {
+    background-color: $border-color;
+    border: 1px solid lighten($border-color, 10%);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    color: $text-color;
+    min-width: 250px;
+
+    &::placeholder {
+      color: darken($text-color, 40%);
+    }
+  }
+
+  .nav-icons span {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 10px; // ระยะห่างระหว่างรูปกับชื่อ
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2px 8px;
+  }
+
+  .profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; // ทำให้รูปเป็นวงกลม
+    object-fit: cover;  // ป้องกันไม่ให้รูปบิดเบี้ยว
+  }
+}
+
+

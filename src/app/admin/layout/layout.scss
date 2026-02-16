@@ -1,0 +1,73 @@
+/* src/app/admin/layout/layout.component.scss */
+// ใช้ชุดสีเดียวกับฝั่ง User
+$primary-bg: #0A0D3E;
+$sidebar-bg: #0E114D;
+$card-bg: #141852;
+$accent-blue: #000CDE;
+$text-color: #FFFFFF;
+$text-muted: #aab2ff;
+
+:host {
+  font-family: 'Poppins', sans-serif;
+}
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: $primary-bg;
+  color: $text-color;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: $sidebar-bg;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    color: $text-muted;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+
+    fa-icon { // <-- จัดสไตล์ให้ fa-icon ด้วย
+      width: 20px; // กำหนดความกว้างเพื่อให้ข้อความตรงกัน
+      text-align: center;
+    }
+
+    &:hover {
+      background-color: $card-bg;
+      color: $text-color;
+    }
+
+    &.active {
+      background-color: $accent-blue;
+      color: $text-color;
+      font-weight: 600;
+    }
+  }
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem 3rem;
+}

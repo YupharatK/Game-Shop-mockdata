@@ -1,0 +1,150 @@
+/* SCSS ที่ปรับปรุงแล้วสำหรับ Navbar */
+@use 'sass:color';
+
+// === Variable Definitions ===
+$navbar-bg: #0E114D;
+$text-color: #FFFFFF;
+$border-color: #2a2e6e;
+$accent-color: #000CDE;
+$accent-blue: #0047FF; // สีสำหรับปุ่ม Login
+$icon-button-bg: #212564; // << FIX 1: เพิ่มตัวแปรที่ขาดหายไป
+
+// === Main Navbar Style ===
+.navbar {
+  display: flex;
+  font-family: 'Poppins', sans-serif; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: $navbar-bg;
+  border-bottom: 1px solid $border-color;
+  color: $text-color;
+
+  // --- Left Side ---
+  .navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    
+    li a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      
+      &:hover, &.active {
+        color: color.adjust($accent-color, $lightness: 20%);
+      }
+    }
+  }
+
+  // --- Right Side ---
+  .navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    // === Search Bar Styles ===
+    .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .search-icon {
+        position: absolute;
+        left: 1rem;
+        color: color.adjust($text-color, $alpha: -0.5);
+      }
+
+      input {
+        background-color: $icon-button-bg;
+        border: 1px solid $border-color;
+        border-radius: 25px;
+        padding: 0.6rem 1rem 0.6rem 2.8rem;
+        color: $text-color;
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.9rem;
+        width: 250px;
+        transition: all 0.3s;
+
+        &::placeholder {
+          color: color.adjust($text-color, $alpha: -0.5);
+        }
+
+        &:focus {
+          outline: none;
+          border-color: $accent-blue;
+          background-color: darken($icon-button-bg, 5%);
+        }
+      }
+    }
+
+    // === Cart Icon Styles ===
+    .cart-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 42px;
+      height: 42px;
+      background-color: $icon-button-bg;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: $text-color;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      text-decoration: none; // เพิ่มเข้ามาเพื่อให้แน่ใจว่าไม่มีขีดเส้นใต้
+
+      &:hover {
+        background-color: darken($icon-button-bg, 5%);
+      }
+    }
+
+    // << FIX 2: ใช้ class 'profile-link' ที่เจาะจงกว่า selector 'a' ทั่วไป
+    .profile-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .avatar-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid transparent;
+      transition: border-color 0.3s;
+
+      &:hover {
+        border-color: $accent-color;
+      }
+    }
+
+    // === Login Button Styles ===
+    .login-button {
+      background-color: $accent-blue;
+      color: $text-color;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: color.adjust($accent-blue, $lightness: 10%);
+      }
+    }
+  }
+}

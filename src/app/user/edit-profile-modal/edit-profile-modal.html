@@ -1,0 +1,38 @@
+<div *ngIf="isOpen$ | async" class="modal-backdrop" (click)="closeModal()">
+  
+  <div class="modal-panel" (click)="$event.stopPropagation()">
+    
+    <h2>Edit Account Details</h2>
+    
+    <form [formGroup]="editForm" (ngSubmit)="saveChanges()">
+      
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" type="text" formControlName="username">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+      </div>
+      
+      <div class="form-group">
+        <label>Profile Picture</label>
+        <div class="file-upload-area" (click)="fileInput.click()">
+          <i class="upload-icon">☁️</i>
+          <span>Upload a picture or drag & drop</span>
+          <span class="file-info">PNG, JPG accepted</span>
+          <input #fileInput type="file" (change)="onFileSelected($event)" hidden>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="btn-primary" [disabled]="editForm.invalid">Save Changes</button>
+      </div>
+      
+    </form>
+    
+  </div>
+</div>
+

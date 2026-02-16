@@ -1,0 +1,304 @@
+/* src/app/user/profile/profile.scss */
+@use 'sass:color';
+
+// === Variable Definitions ===
+$primary-bg: #0F1128;
+$text-color: #FFFFFF;
+$text-muted: #7A7E9C;
+$accent-blue: #0047FF;
+$card-bg: #1A1D3A;
+$border-color: #262945;
+$amount-positive: #00D68F;
+$amount-negative: #FF3D71;
+
+// === Host and Container ===
+:host {
+  display: block;
+  background-color: $primary-bg;
+  color: $text-color;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+.profile-container {
+  padding: 3rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+// === Profile Header ===
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  padding-bottom: 0;
+  border-bottom: none;
+
+  .header-title {
+    h1 { 
+      font-size: 3rem; 
+      margin: 0 0 0.5rem 0; 
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    p { 
+      font-size: 1rem; 
+      color: $text-muted; 
+      margin: 0;
+      font-weight: 400;
+    }
+  }
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+
+  .avatar { 
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid $border-color;
+  }
+  
+  .user-details { 
+    display: flex; 
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .username { 
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  .email { 
+    font-size: 0.85rem; 
+    color: $text-muted; 
+  }
+  
+  .logout-link { 
+    color: $text-color; 
+    text-decoration: none; 
+    margin-left: 1.5rem; 
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+    
+    &:hover { 
+      color: $accent-blue; 
+    }
+    
+    .logout-icon {
+      font-style: normal;
+    }
+  }
+}
+
+// === Main Content Layout ===
+.profile-content {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2.5rem;
+}
+
+// === Left Panel ===
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.balance-card {
+  background-color: $card-bg;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid $border-color;
+  
+  p { 
+    margin: 0 0 1rem 0; 
+    color: $text-muted; 
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  
+  .balance-amount { 
+    font-size: 3rem; 
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    display: block;
+  }
+}
+
+.add-funds {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  
+  p { 
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    margin: 0 0 1rem 0;
+    color: $text-color;
+  }
+  
+  .fund-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    
+    button {
+      background-color: $card-bg;
+      color: $text-color;
+      border: 1px solid $border-color;
+      padding: 1.2rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.3s;
+      
+      &:hover {
+        background-color: color.adjust($card-bg, $lightness: 3%);
+        border-color: color.adjust($border-color, $lightness: 10%);
+      }
+      
+      &.active { 
+        background-color: $accent-blue;
+        border-color: $accent-blue;
+        color: $text-color;
+        
+        &:hover {
+          background-color: color.adjust($accent-blue, $lightness: 5%);
+        }
+      }
+    }
+  }
+}
+
+// === Right Panel (Transaction History) ===
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-history {
+  background-color: transparent;
+  border-radius: 0;
+  padding: 0;
+  flex: 1;
+
+  h2 { 
+    font-size: 1.8rem; 
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+.history-table {
+  background-color: $card-bg;
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  overflow: hidden;
+  
+  .history-item {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 2.5fr 1.2fr;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid $border-color;
+    gap: 1rem;
+    
+    &:last-child { 
+      border-bottom: none; 
+    }
+    
+    &.header { 
+      font-weight: 600; 
+      color: $text-muted; 
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 1.2rem 2rem;
+      background-color: color.adjust($card-bg, $lightness: -2%);
+    }
+
+    span {
+      font-size: 0.95rem;
+      
+      &:last-child { 
+        text-align: right; 
+        font-weight: 600;
+        font-size: 1rem;
+      }
+    }
+    
+    .amount-positive { 
+      color: $amount-positive; 
+    }
+    
+    .amount-negative { 
+      color: $amount-negative; 
+    }
+  }
+}
+
+// === Responsive Design ===
+@media (max-width: 1200px) {
+  .profile-content {
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 968px) {
+  .profile-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .history-table .history-item {
+    grid-template-columns: 1fr 1fr 1.5fr 1fr;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+.edit-profile-btn {
+  display: inline-flex; // จัดไอคอนกับข้อความให้อยู่ในบรรทัดเดียวกัน
+  align-items: center;
+  gap: 0.5rem; // ระยะห่างระหว่างไอคอนกับข้อความ
+  
+  background-color: #2a2e6e; // สีพื้นหลังที่เข้ากับธีม
+  color: #FFFFFF; // สีข้อความ
+  
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  
+  font-family: 'Poppins', sans-serif; // ใช้ font เดียวกับส่วนอื่นๆ
+  font-size: 0.9rem;
+  font-weight: 500;
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #3a3e7e; // สีพื้นหลังเมื่อเอาเมาส์ไปชี้
+  }
+}

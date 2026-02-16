@@ -1,0 +1,61 @@
+// src/app/user/profile/topup-modal/topup-modal.component.scss
+
+// สามารถ @import สไตล์กลางของ Modal มาใช้ได้ หรือคัดลอกมาวาง
+.modal-overlay {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(10, 13, 62, 0.7);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1050;
+}
+
+.modal-content {
+  background: #141852;
+  padding: 2rem;
+  border-radius: 12px;
+  color: white;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-group {
+  position: relative;
+  margin: 2rem 0;
+
+  input {
+    width: 100%;
+    padding: 1rem;
+    padding-right: 5rem; /* เว้นที่ให้คำว่า Baht */
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #2a2e6e;
+    background: #0A0D3E;
+    color: #FFFFFF;
+    -moz-appearance: textfield; /* ซ่อนลูกศรของ input number ใน Firefox */
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none; /* ซ่อนลูกศรของ input number ใน Chrome/Safari */
+      margin: 0;
+    }
+  }
+
+  .currency {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #a0a8c2;
+  }
+}
+
+.modal-actions {
+  display: flex; justify-content: center; gap: 1rem;
+  button {
+    padding: 0.7rem 2rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer;
+  }
+  .btn-cancel { background-color: #3a3e7e; color: #fff; }
+  .btn-confirm { background-color: #0047FF; color: #fff; }
+}

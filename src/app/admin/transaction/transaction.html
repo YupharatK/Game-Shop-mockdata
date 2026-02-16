@@ -1,0 +1,55 @@
+<div class="page-container">
+  <header class="page-header">
+    <h1>Transaction History</h1>
+  </header>
+
+  <section class="filter-bar">
+    <div class="filter-group">
+      <label>Search User</label>
+      <div class="input-container">
+        <fa-icon [icon]="faSearch"></fa-icon>
+        <input 
+          type="text" 
+          placeholder="Search by name or email"
+          [(ngModel)]="searchText"
+          (input)="applyFilters()">
+      </div>
+    </div>
+    <div class="filter-group">
+      <label>Transaction Type</label>
+      <select [(ngModel)]="selectedType" (change)="applyFilters()">
+        <option value="">All Types</option>
+        <option value="purchase">Purchase</option>
+        <option value="topup">Top-up</option>
+      </select>
+    </div>
+  </section>
+
+  <div *ngIf="isLoadingTransactions" class="loading-indicator">
+    Loading transactions...
+  </div>
+
+  <section class="transaction-list" *ngIf="!isLoadingTransactions">
+    <div class="list-row header">
+      <span>USERNAME</span>
+      <span>EMAIL</span>
+      <span>TRANSACTION TYPE</span>
+      <span>AMOUNT</span>
+      <span>DATE</span>
+    </div>
+
+    <div class="list-row" *ngFor="let tx of filteredTransactions">
+      <span class="username">{{ tx.username }}</span>
+      <span>{{ tx.email }}</span>
+      <span>{{ tx.type }}</span>
+      <span class="amount" [ngClass]="{'amount-positive': tx.amount > 0, 'amount-negative': tx.amount < 0}">
+        {{ tx.amount > 0 ? '+' : '' }}{{ tx.amount | number:'1.2-2' }} ฿
+      </span>
+      <span>{{ tx.date }}</span>
+    </div>
+
+    <div *ngIf="filteredTransactions.length === 0" class="no-results">
+      No transactions found.
+    </div>
+  </section>
+</div>

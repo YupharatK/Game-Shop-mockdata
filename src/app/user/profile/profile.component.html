@@ -1,0 +1,73 @@
+<div *ngIf="user" class="profile-container">
+
+  <header class="profile-header">
+    <div class="header-title">
+      <h1>Account Details</h1>
+      <p>Manage your account setting and preferences.</p>
+    </div>
+    
+    <div class="user-info">
+      <img [src]="user.profile_image" [alt]="user.username" class="avatar">
+      <div class="user-details">
+        <span class="username">{{ user.username }}</span>
+        <span class="email">{{ user.email }}</span>
+      </div>
+      <button (click)="editProfile()" class="edit-profile-btn">
+        <fa-icon [icon]="faPencilAlt"></fa-icon>
+        <span>Edit Profile</span>
+      </button>
+      <a (click)="logout()" class="logout-link">
+        Log Out <i class="logout-icon">⇥</i>
+      </a>
+    </div>
+  </header>
+  
+  <div class="profile-content">
+    <aside class="left-panel">
+      <div class="balance-card">
+        <p>Your current balance</p>
+        <span class="balance-amount">{{ walletBalance | number:'1.2-2' }} THB</span>
+      </div>
+      
+      <div class="add-funds">
+        <p>Add Funds</p>
+        <div class="fund-buttons">
+          <button (click)="addFunds(100)">100 THB</button>
+          <button (click)="addFunds(200)">200 THB</button>
+          <button (click)="addFunds(500)">500 THB</button>
+          <button class="active" (click)="openTopupModal()">Custom Amount</button>
+        </div>
+      </div>
+    </aside>
+  
+    <main class="right-panel">
+      <div class="transaction-history">
+        <h2>Transaction History</h2>
+        <div class="history-table">
+          <div class="history-item header">
+            <span>DATE</span>
+            <span>TYPE</span>
+            <span>DESCRIPTION</span>
+            <span>AMOUNT</span>
+          </div>
+          <div class="history-item" *ngFor="let tx of transactionHistory">
+            <span>{{ tx.created_at | date:'yyyy-MM-dd' }}</span>
+            <span>{{ tx.type }}</span>
+            <span>{{ tx.description }}</span>
+            <span [ngClass]="{'amount-positive': tx.amount > 0, 'amount-negative': tx.amount < 0}">
+              {{ tx.amount > 0 ? '+' : '' }}{{ tx.amount | number:'1.2-2' }} Baht
+            </span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+</div>
+
+<app-edit-profile-modal [user]="user"></app-edit-profile-modal>
+<app-topup-modal
+  [isOpen]="isTopupModalOpen"
+  (closeModal)="closeTopupModal()"
+  (topupAmount)="handleTopupConfirmation($event)">
+</app-topup-modal>

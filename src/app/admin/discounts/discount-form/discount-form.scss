@@ -1,0 +1,39 @@
+/* src/app/admin/discounts/discount-form/discount-form.component.scss */
+$primary-bg: #0A0D3E;
+$card-bg: #141852;
+$text-color: #FFFFFF;
+$text-muted: #aab2ff;
+$accent-blue: #000CDE;
+$border-color: #2a2e6e;
+
+:host { font-family: 'Poppins', sans-serif; }
+
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex; justify-content: center; align-items: center; z-index: 1000;
+}
+.modal-content {
+  background-color: $primary-bg; padding: 2rem; border-radius: 15px;
+  width: 100%; max-width: 500px; border: 1px solid $border-color;
+  h2 { margin: 0 0 2rem 0; font-size: 1.8rem; }
+}
+.form-group { margin-bottom: 1.5rem; }
+label { display: block; margin-bottom: 0.5rem; color: $text-muted; }
+input {
+  width: 100%; padding: 0.8rem 1rem; background-color: $card-bg;
+  border: 1px solid $border-color; border-radius: 8px; color: $text-color; font-size: 1rem;
+}
+.date-input-container { position: relative; display: flex; align-items: center;
+  fa-icon { position: absolute; right: 1rem; color: $text-muted; }
+}
+.modal-actions {
+  display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem;
+  padding-top: 1.5rem; border-top: 1px solid $border-color;
+  button {
+    padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 600;
+    cursor: pointer; border: 1px solid $border-color;
+  }
+  .btn-cancel { background-color: transparent; color: $text-muted; &:hover{ background-color: $card-bg; } }
+  .btn-save { background-color: $accent-blue; color: $text-color; }
+}

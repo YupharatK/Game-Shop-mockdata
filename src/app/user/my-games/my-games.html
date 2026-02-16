@@ -1,0 +1,38 @@
+<div class="my-games-container">
+  <header class="page-header">
+    <h1>My Games</h1>
+    <!-- <p>You own {{ ownedGameCount }} games in your library</p> -->
+  </header>
+
+<!-- src/app/user/my-games/my-games.html -->
+<!-- src/app/user/my-games/my-games.html -->
+<div class="filter-controls">
+  <select #genreSel (change)="onGenreChange(genreSel.value)">
+    <option value="">Genre</option>
+    <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+  </select>
+  <button class="filter-button" [class.active]="!selectedGenre" (click)="showAll()">All</button>
+</div>
+
+<div class="game-grid">
+  <a
+    class="game-card-link game-card"
+    *ngFor="let game of filtered; trackBy: trackById"
+    [routerLink]="['/game-details', game.id]"
+    role="link"
+    [state]="{ from: 'library' }"
+  >
+    <!-- รูปเกม -->
+    <img [src]="game.imageUrl" [alt]="game.title" class="game-image">
+
+    <!-- เนื้อหา -->
+    <div class="card-content">
+      <h3 class="game-title">{{ game.title }}</h3>
+      <p class="game-genre">{{ game.game_type }}</p>
+      <p class="game-price" *ngIf="game.price">฿ {{ game.price | number:'1.2-2' }}</p>
+    </div>
+  </a>
+</div>
+
+
+

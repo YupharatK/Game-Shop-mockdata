@@ -1,0 +1,30 @@
+<div class="cart-overlay" [class.show]="isCartOpen$ | async" (click)="closeCart()"></div>
+
+<div class="cart-panel" [class.show]="isCartOpen$ | async">
+  <div class="cart-header">
+    <h3>My Cart {{ (items$ | async)?.length }} Item(s)</h3>
+    <button class="close-btn" (click)="closeCart()">×</button>
+  </div>
+
+  <div class="cart-items">
+    <div class="cart-item" *ngFor="let item of items$ | async">
+      <img [src]="item.imageUrl" [alt]="item.title" class="item-image" />
+      <div class="item-details">
+        <p class="item-title">{{ item.title }}</p>
+        <p class="item-price">{{ item.price }} B</p>
+      </div>
+      <button class="delete-btn" (click)="removeItem(item)">
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </button>
+    </div>
+    <p *ngIf="(items$ | async)?.length === 0" class="empty-message">Your cart is empty.</p>
+  </div>
+
+  <div class="cart-footer">
+    <div class="subtotal">
+      <span>Subtotal</span>
+      <span>{{ getSubtotal() | number : '1.2-2' }} B</span>
+    </div>
+    <a routerLink="/shopping-cart" class="checkout-btn" (click)="closeCart()">GO TO CHECKOUT</a>
+  </div>
+</div>

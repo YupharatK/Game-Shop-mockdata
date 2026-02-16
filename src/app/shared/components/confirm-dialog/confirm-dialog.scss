@@ -1,0 +1,87 @@
+/* src/app/shared/components/confirm-dialog/confirm-dialog.component.scss */
+
+// --- Variables ---
+$primary-bg: #0A0D3E;
+$card-bg: #141852;
+$text-color: #FFFFFF;
+$text-secondary-color: #a0a8c2;
+$border-color: #2a2e6e;
+$confirm-color: #F44336; // สีแดงสำหรับ Action ที่ต้องระวัง
+$cancel-bg-color: #3a3e7e; // สีเทา/น้ำเงินเข้มสำหรับปุ่ม Cancel
+
+// --- Styles ---
+
+// พื้นหลังสีดำโปร่งแสง
+.modal-overlay {
+  // --- ส่วนสำคัญที่เพิ่มเข้ามา ---
+  position: fixed;   // 1. ทำให้ลอยอยู่เหนือทุกอย่าง
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1050;     // 2. กำหนดให้อยู่ชั้นบนสุด
+
+  // --- จัดให้กล่องข้อความอยู่ตรงกลาง ---
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(10, 13, 62, 0.7); // ใช้สีพื้นหลังหลักมาทำโปร่งแสง
+  backdrop-filter: blur(5px); // (Optional) เพิ่มเอฟเฟกต์เบลอพื้นหลัง
+}
+
+// กล่องข้อความ
+.modal-content {
+  background-color: $card-bg;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  border: 1px solid $border-color;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem 0;
+  color: $text-color;
+}
+
+.modal-message {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: $text-secondary-color;
+  line-height: 1.6;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+
+  .btn {
+    padding: 0.7rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none; // เอาเส้นขอบออกเพื่อให้ดูเรียบง่ายขึ้น
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  // ปรับสไตล์ปุ่ม Cancel ให้ดูรองลงมา
+  .btn-cancel {
+    background-color: $cancel-bg-color;
+    color: $text-color;
+  }
+
+  // ปรับสไตล์ปุ่ม Confirm ให้เด่นชัด
+  .btn-confirm {
+    background-color: $confirm-color;
+    color: $text-color;
+  }
+}

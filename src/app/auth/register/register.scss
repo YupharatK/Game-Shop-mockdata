@@ -1,0 +1,154 @@
+/* src/app/auth/register/register.component.scss */
+
+// ใช้ตัวแปรสีชุดเดิมเพื่อความสอดคล้อง
+$bg-color: #0E114D;
+$border-color: #0015FE;
+$button-color: #000CDE;
+$text-color: #FFFFFF;
+$placeholder-text: #aab2ff;
+$input-border-color: #3d4381;
+
+// Host element styling
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  background-color: $bg-color;
+  color: $text-color;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+// Container หลัก
+.register-content {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+
+  h2 {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+}
+
+// กล่องฟอร์ม
+.register-box {
+  padding: 1rem;
+}
+
+// ช่องกรอกข้อมูล (สไตล์ขีดเส้นใต้)
+.form-group {
+  margin-bottom: 2rem;
+
+  input {
+    width: 100%;
+    padding: 0.8rem 0.2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid $input-border-color;
+    color: $text-color;
+    font-size: 1rem;
+    border-radius: 0;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: $placeholder-text;
+      opacity: 0.8;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom-color: $border-color;
+    }
+  }
+}
+
+// ส่วนอัปโหลดไฟล์
+.upload-section {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+
+  .section-title {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+}
+
+// ซ่อน input file ที่หน้าตาไม่สวยงาม
+.file-input {
+  display: none;
+}
+
+// กล่องสำหรับลากไฟล์วาง
+.drop-zone {
+  display: block;
+  border: 2px dashed $input-border-color;
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+
+  &:hover {
+    border-color: $border-color;
+    background-color: rgba($text-color, 0.03);
+  }
+
+  .drop-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .upload-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+      fill: $placeholder-text;
+    }
+
+    span {
+      color: $placeholder-text;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// ปุ่ม Register
+.register-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: $button-color;
+  color: $text-color;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten($button-color, 10%);
+  }
+}
+
+// ลิงก์ไปหน้า Sign in
+.signin-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: $placeholder-text;
+
+  a {
+    color: $text-color;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

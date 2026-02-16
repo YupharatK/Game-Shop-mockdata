@@ -1,0 +1,138 @@
+/* src/app/user/game-details/game-details.component.scss */
+@use 'sass:color';
+
+$primary-bg: #0A0D3E;
+$text-color: #FFFFFF;
+$text-muted: #aab2ff;
+$accent-blue: #000CDE;
+$card-bg: #141852;
+
+:host {
+  display: block;
+  background-color: $primary-bg;
+  color: $text-color;
+  font-family: 'Poppins', sans-serif;
+  min-height: calc(100vh - 80px);
+}
+
+.details-container {
+  padding: 3rem 8%;
+}
+
+.main-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+.game-image-container .game-image {
+  width: 100%;
+  border-radius: 15px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.game-info {
+  .game-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .game-price {
+    font-size: 1.8rem;
+    color: $text-muted;
+    margin: 0.5rem 0;
+  }
+  .game-genre {
+    font-size: 1.1rem;
+    background-color: $card-bg;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 1rem;
+  }
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .btn {
+    padding: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  .btn-add {
+    background-color: $card-bg;
+    color: $text-color;
+  }
+  .btn-buy {
+    background-color: $accent-blue;
+    color: $text-color;
+  }
+}
+
+.description-section, .details-section {
+  margin-bottom: 3rem;
+  h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid $card-bg;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  p {
+    color: $text-muted;
+    line-height: 1.8;
+  }
+}
+
+.details-table {
+  background-color: $card-bg;
+  border-radius: 10px;
+  padding: 1rem;
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid color.adjust($card-bg, $lightness: -5%);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .detail-key {
+      color: $text-muted;
+    }
+    .detail-value {
+      font-weight: 600;
+    }
+  }
+  .btn-play {
+  background-color: #2ecc71;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-play:hover {
+  background-color: #27ae60;
+  transform: translateY(-1px);
+}
+}

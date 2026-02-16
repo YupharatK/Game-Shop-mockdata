@@ -1,0 +1,92 @@
+/* src/app/admin/transaction/transaction.component.scss */
+$card-bg: #141852;
+$text-color: #ffffff;
+$text-muted: #aab2ff;
+$border-color: #2a2e6e;
+$amount-positive: #4caf50;
+$amount-negative: #f44336;
+
+.page-header {
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  h1 {
+    margin: 0;
+    font-size: 2.2rem;
+  }
+}
+
+.filter-bar {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $text-muted;
+  }
+
+  .input-container,
+  select {
+    display: flex;
+    align-items: center;
+    background-color: $card-bg;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    padding: 0 1rem;
+  }
+
+  select {
+    padding: 0.8rem 1rem;
+    color: $text-color;
+  }
+
+  input {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: $text-color;
+    padding: 0.8rem;
+    font-size: 1rem;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.transaction-list {
+  background-color: $card-bg;
+  border-radius: 10px;
+}
+
+.list-row {
+  display: grid;
+  // ปรับ grid-template-columns ให้รองรับ 6 columns
+  grid-template-columns: 1fr 1.5fr 1fr 2fr 1fr 1fr;
+  align-items: center;
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid $border-color;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.header {
+    font-weight: 600;
+    color: $text-muted;
+  }
+  .username {
+    font-weight: 500;
+  }
+  span:nth-child(4),
+  span:nth-child(5) {
+    text-align: right;
+  }
+  .amount-positive {
+    color: $amount-positive;
+  }
+  .amount-negative {
+    color: $amount-negative;
+  }
+}

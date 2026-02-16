@@ -1,0 +1,51 @@
+<div class="page-container">
+  <header class="page-header">
+    <h1>Discounts</h1>
+    <button class="btn-add-new" type="button" (click)="openDiscountForm()">
+      <fa-icon [icon]="faPlus" aria-hidden="true"></fa-icon> Add New Discount Code
+    </button>
+  </header>
+
+  <section class="discounts-list">
+    <h2>Discount Codes</h2>
+
+    <div class="list-container">
+      <div class="list-row header">
+        <span>CODE NAME</span>
+        <span>DISCOUNT VALUE</span>
+        <span>TOTAL USES</span>
+        <span>REMAINING USES</span>
+        <span>CREATED</span>
+        <span>ACTIONS</span>
+      </div>
+
+      <!-- ใช้ฟิลด์จริงจาก API -->
+      <div class="list-row" *ngFor="let d of discounts">
+        <span class="code-name">{{ d.code }}</span>
+        <span>{{ d.discount_percent }}%</span>
+        <span>{{ d.max_usage }}</span>
+        <span>{{ remainingUses(d) }}</span>
+        <span>{{ d.created_at | date: 'yyyy-MM-dd HH:mm' }}</span>
+
+        <div class="actions">
+          <button class="action-btn edit" type="button" (click)="openDiscountForm(d)" aria-label="Edit">
+            <fa-icon [icon]="faEdit" aria-hidden="true"></fa-icon>
+          </button>
+          <button class="action-btn delete" type="button" (click)="deleteFromList(d)" aria-label="Delete">
+            <fa-icon [icon]="faDelete" aria-hidden="true"></fa-icon>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="!discounts?.length" class="empty">No discount codes yet.</div>
+    </div>
+  </section>
+</div>
+
+<app-discount-form
+  [isOpen]="isDiscountFormOpen"
+  [discountToEdit]="currentDiscountForEdit"
+  (closeModal)="closeDiscountForm()"
+  (saved)="onSaved()"
+  (deleted)="onDeleted()">
+</app-discount-form>

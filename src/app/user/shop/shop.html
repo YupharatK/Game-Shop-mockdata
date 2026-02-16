@@ -1,0 +1,39 @@
+<div class="shop-page-container">
+  <header class="browse-header">
+    <h1>Browse Games</h1>
+    <p>Filter and sort to find your next adventure</p>
+  </header>
+
+  <div class="filter-controls">
+    <select #genreSel (change)="onGenreChange(genreSel.value)">
+      <option value="">Genre</option>
+      <option *ngFor="let g of genres" [value]="g">{{ g }}</option>
+    </select>
+    <button class="filter-button" [class.active]="!selectedGenre" (click)="showAll()">All</button>
+  </div>
+
+  <div class="game-grid">
+    <a *ngFor="let game of filtered" [routerLink]="['/game-details', game.id]"
+    role="link"
+    [state]="{ from: 'library' }" class="game-card-link">
+      <div class="game-card">
+        <img [src]="game.imageUrl" [alt]="game.title" class="game-image" />
+        <div class="card-content">
+          <h3 class="game-title">{{ game.title }}</h3>
+          <p class="game-genre">{{ game.game_type }}</p>
+          <p class="game-price">{{ game.price | number : '1.2-2' }} THB</p>
+          
+          <div *ngIf="!game.isOwned; else inLibrary" class="button-group">
+            <button class="btn-add" (click)="addToCart(game, $event)">ADD</button>
+            <button class="btn-buy" (click)="buyNow(game, $event)">BUY</button>
+          </div>
+
+          <ng-template #inLibrary>
+            <div class="owned-badge">IN LIBRARY</div>
+          </ng-template>
+
+          </div>
+      </div>
+    </a>
+  </div>
+</div>

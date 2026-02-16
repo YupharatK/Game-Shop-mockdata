@@ -1,0 +1,36 @@
+<div class="admin-container">
+  <aside class="sidebar">
+    <div class="logo">GameVault</div>
+    <ul class="nav-list">
+      <li>
+        <a routerLink="dashboard" routerLinkActive="active">
+          <fa-icon [icon]="faDashboard"></fa-icon> Dashboard
+        </a>
+      </li>
+      <li>
+        <a routerLink="games" routerLinkActive="active">
+          <fa-icon [icon]="faGames"></fa-icon> Games
+        </a>
+      </li>
+      <li>
+        <a routerLink="users" routerLinkActive="active">
+          <fa-icon [icon]="faUsers"></fa-icon> Users
+        </a>
+      </li>
+      <li>
+        <a routerLink="transactions" routerLinkActive="active">
+          <fa-icon [icon]="faTransaction"></fa-icon> Transaction
+        </a>
+      </li>
+      <li>
+        <a routerLink="discounts" routerLinkActive="active">
+          <fa-icon [icon]="faDiscounts"></fa-icon> Discounts
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

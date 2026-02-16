@@ -1,0 +1,44 @@
+<div *ngIf="game$ | async as game" class="details-container">
+  <section class="main-info">
+    <div class="game-image-container">
+      <img [src]="game.image_url" [alt]="game.name" class="game-image">
+    </div>
+    <div class="game-info">
+      <h1 class="game-title">{{ game.name }}</h1>
+      <p class="game-price">฿ {{ game.price | number:'1.2-2' }}</p>
+      <p class="game-genre">{{ game.genre_name }}</p>
+
+      <div class="actions">
+        <!-- ถ้ายังไม่ได้เป็นเจ้าของ -->
+        <ng-container *ngIf="!isOwned; else ownedBlock">
+          <button class="btn btn-add" (click)="addToCart(game)">🛒 Add to Cart</button>
+          <button class="btn btn-buy" (click)="buyNow(game)">Buy Now !!</button>
+        </ng-container>
+
+        <!-- ถ้าเป็นเจ้าของ -->
+        <ng-template #ownedBlock>
+          <button class="btn btn-play" (click)="playGame(game)">▶️ Play</button>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+
+  <section class="description-section">
+    <h2>Description</h2>
+    <p>{{ game.description }}</p>
+  </section>
+
+  <section class="details-section">
+    <h2>Details</h2>
+    <div class="details-table">
+      <div class="detail-item">
+        <span class="detail-key">Release Date</span>
+        <span class="detail-value">{{ game.release_date | date:'longDate' }}</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-key">Best Seller Rank</span>
+        <span class="detail-value">{{ game.rank_position ? '#' + game.rank_position : 'N/A' }}</span>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,37 @@
+<div class="page-container">
+  <header class="page-header">
+    <h1>Manage Games</h1>
+    <button class="btn-add-new" (click)="openGameForm()">
+      <fa-icon [icon]="faPlus"></fa-icon> Add New Games
+    </button>
+  </header>
+  
+  <section class="games-list">
+    <div class="list-container">
+      <div class="list-row" *ngFor="let game of games">
+        <span>{{ game.name }}</span> <span>{{ game.genre }}</span>
+        <span>{{ game.release_date | date:'yyyy-MM-dd' }}</span> <div class="actions">
+          <button class="action-btn edit" (click)="openGameForm(game)">
+            <fa-icon [icon]="faEdit"></fa-icon>
+          </button>
+           <button class="action-btn delete" (click)="openConfirmDialog(game)">
+            <fa-icon [icon]="faDelete"></fa-icon>
+           </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-game-form 
+  [isOpen]="isGameFormOpen" 
+  [gameToEdit]="currentGameForEdit" 
+  (closeModal)="closeGameForm()" 
+  (saveGame)="handleFormSave($event)">
+</app-game-form>
+
+<app-confirm-dialog
+  [isOpen]="isConfirmDialogOpen"
+  [message]="'Are you sure you want to delete the game ' + (gameToDelete?.name || '') + '?'"
+  (confirmed)="handleConfirmation($event)">
+</app-confirm-dialog>
